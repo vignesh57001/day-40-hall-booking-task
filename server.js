@@ -4,7 +4,6 @@ const cors = require("cors");
 const app = express();
 
 app.use(express.json());
-const db = require("./db");
 
 app.use(
   cors({
@@ -12,38 +11,24 @@ app.use(
   })
 );
 
-// const bookingRouter = require("./routes/booking.route");
-// const roomRouter = require("./routes/room.route");
+const Room = require("./modelss/roomModel");
+
+const db = require("./db");
+const roomsRoute = require("./routes/roomsRoute");
+const bookingRoute = require("./routes/bookingsRoute");
+
+app.use("/api/rooms/", roomsRoute);
+app.use("/api/bookings/", bookingRoute);
 
 // For creating Room
 
 // const room = [
 //   {
-//       "id":"1",
-//       "fk":"101",
-//       "roomName":"High",
-//       "noOfSeats":"5",
-//       "amentities":"Air Conditioner, Balcony, Smart TV, Telephone, Free Wifi, Iron Box, Water Heater",
-//       "priceForeOneHour":"Rs.1000",
-//       "status":"Booked"
-//   },
-//       {
-//           "id":"2",
-//           "fk":"102",
-//           "roomName":"Medium",
-//       "noOfSeats":"5",
-//       "amentities":"Balcony, Smart TV, Telephone, Water Heater",
-//       "priceForeOneHour":"Rs.600",
-//       "status":"Booked"
-//   },
-//           {
-//               "id":"3",
-//               "fk":"103",
-//               "roomName":"Low",
-//       "noOfSeats":"5",
-//       "amentities":"Balcony, Telephone, Water Heater",
-//       "priceForeOneHour":"Rs.400",
-//       "status":"Booked"
+//     "name":"Room No & name",
+//     "price":"Room Price",
+//     "category":"ac - non ac",
+//     "img":"room img",
+//     "amenities":"room amenities - Air Conditioner, Smart TV, Telephone, Free Wifi ",
 //   }
 // ]
 
@@ -51,33 +36,13 @@ app.use(
 
 // const booking = [
 //   {
-//     "id": "1",
-//     "roomID": "101",
-//     "customerName":"Krishnan",
-//     "date":"2022-11-30T18:25:43.511Z",
-//     "startTime":"11:00",
-//     "endTime":"22:00"
-//     },
-//     {
-//       "id": "2",
-//       "roomID": "102",
-//       "customerName":"Krishnan",
-//       "date":"2022-11-20T18:25:43.511Z",
-//       "startTime":"10:00",
-//       "endTime":"20:00"
-//       },
-//       {
-//         "id": "3",
-//         "roomID": "103",
-//         "customerName":"Krishnan",
-//         "date":"2022-11-10T18:25:43.511Z",
-//         "startTime":"09:00",
-//         "endTime":"16:00"
-//         }
+//     "name": "vignesh",
+//     "email": "vignesh@gmail.com",
+//     "userid":"Id No",
+//     "category":"Ac Or Non Ac",
+//     "date":"11/11/1111"
+//     }
 // ]
-
-// app.use("/booking", bookingRouter);
-// app.use("/room", roomRouter);
 
 app.get("/", function (request, response) {
   response.send("🙋‍♂️, 🌏 🎊✨🤩");
