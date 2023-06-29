@@ -45,7 +45,7 @@ app.use("/api/bookings/", bookingRoute);
 // ]
 
 app.get("/", function (request, response) {
-  response.send("🙋‍♂️, 🌏 🎊✨🤩");
+  response.send("Your Server is Working for Hall booking, 🙋‍♂️, 🌏 🎊✨🤩");
 });
 const port = process.env.PORT || 8000;
 
